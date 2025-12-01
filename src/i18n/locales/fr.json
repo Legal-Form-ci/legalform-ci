@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À propos",
+    "pricing": "Tarifs",
+    "contact": "Contact",
+    "blog": "Blog",
+    "ebooks": "E-books",
+    "dashboard": "Tableau de bord",
+    "login": "Connexion",
+    "logout": "Déconnexion"
+  },
+  "hero": {
+    "title": "Créez votre entreprise en Côte d'Ivoire",
+    "subtitle": "Simplifiez vos démarches juridiques et administratives",
+    "cta": "Créer mon entreprise",
+    "track": "Suivre mon dossier"
+  },
+  "services": {
+    "title": "Nos Services",
+    "creation": "Création d'entreprise",
+    "additional": "Services additionnels",
+    "cnps": "CNPS",
+    "dfe": "DFE",
+    "ncc": "NCC"
+  },
+  "footer": {
+    "about": "À propos de LegalForm",
+    "description": "Votre partenaire de confiance pour toutes vos démarches juridiques et administratives en Côte d'Ivoire.",
+    "quickLinks": "Liens rapides",
+    "contact": "Contact",
+    "followUs": "Suivez-nous",
+    "rights": "Tous droits réservés"
+  },
+  "form": {
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "required": "Champs obligatoires",
+    "email": "Email",
+    "phone": "Téléphone",
+    "name": "Nom complet",
+    "company": "Nom de l'entreprise",
+    "message": "Message"
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Inscription",
+    "email": "Adresse email",
+    "password": "Mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Vous avez déjà un compte ?",
+    "createAccount": "Créer un compte",
+    "loginButton": "Se connecter",
+    "signupButton": "S'inscrire"
+  },
+  "tracking": {
+    "title": "Suivre mon dossier",
+    "enterPhone": "Entrez votre numéro de téléphone",
+    "search": "Rechercher",
+    "status": "Statut",
+    "trackingNumber": "Numéro de suivi",
+    "createdAt": "Créé le",
+    "updatedAt": "Mis à jour le"
+  },
+  "payment": {
+    "title": "Paiement",
+    "amount": "Montant",
+    "description": "Description",
+    "pay": "Payer",
+    "pending": "En attente",
+    "confirmed": "Confirmé",
+    "failed": "Échoué"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "back": "Retour",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "view": "Voir",
+    "download": "Télécharger",
+    "upload": "Téléverser",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "all": "Tous",
+    "new": "Nouveau",
+    "actions": "Actions"
+  }
+}

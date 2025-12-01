@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, ChevronDown, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
@@ -46,7 +47,8 @@ const Header = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-2">
+            <LanguageSwitcher />
             {user ? (
               <Link to={userRole === 'admin' ? '/admin/dashboard' : '/client/dashboard'}>
                 <Button variant="outline" className="font-semibold">

@@ -1,0 +1,16 @@
+{
+  "name": "LegalForm - Création d'entreprise en Côte d'Ivoire",
+  "short_name": "LegalForm",
+  "description": "Simplifiez vos démarches juridiques et administratives en Côte d'Ivoire",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#667eea",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

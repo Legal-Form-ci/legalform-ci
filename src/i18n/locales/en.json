@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "blog": "Blog",
+    "ebooks": "E-books",
+    "dashboard": "Dashboard",
+    "login": "Login",
+    "logout": "Logout"
+  },
+  "hero": {
+    "title": "Start Your Business in Ivory Coast",
+    "subtitle": "Simplify your legal and administrative procedures",
+    "cta": "Start My Business",
+    "track": "Track My Application"
+  },
+  "services": {
+    "title": "Our Services",
+    "creation": "Company Formation",
+    "additional": "Additional Services",
+    "cnps": "CNPS",
+    "dfe": "DFE",
+    "ncc": "NCC"
+  },
+  "footer": {
+    "about": "About LegalForm",
+    "description": "Your trusted partner for all your legal and administrative procedures in Ivory Coast.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved"
+  },
+  "form": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "next": "Next",
+    "previous": "Previous",
+    "required": "Required fields",
+    "email": "Email",
+    "phone": "Phone",
+    "name": "Full Name",
+    "company": "Company Name",
+    "message": "Message"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "createAccount": "Create Account",
+    "loginButton": "Log In",
+    "signupButton": "Sign Up"
+  },
+  "tracking": {
+    "title": "Track My Application",
+    "enterPhone": "Enter your phone number",
+    "search": "Search",
+    "status": "Status",
+    "trackingNumber": "Tracking Number",
+    "createdAt": "Created on",
+    "updatedAt": "Updated on"
+  },
+  "payment": {
+    "title": "Payment",
+    "amount": "Amount",
+    "description": "Description",
+    "pay": "Pay",
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "failed": "Failed"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "back": "Back",
+    "close": "Close",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "new": "New",
+    "actions": "Actions"
+  }
+}

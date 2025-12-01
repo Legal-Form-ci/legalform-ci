@@ -2,7 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { logPageView } from "@/utils/analytics";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Create from "./pages/Create";
@@ -28,8 +30,20 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Ebooks from "./pages/Ebooks";
 import EbookDownload from "./pages/EbookDownload";
+import SetupSuperAdmin from "./pages/admin/SetupSuperAdmin";
 
 const queryClient = new QueryClient();
+
+// Component to track page views
+const PageViewTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    logPageView(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -37,6 +51,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageViewTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
@@ -51,6 +66,7 @@ const App = () => (
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin/setup" element={<InitialSetup />} />
+          <Route path="/setup-admin" element={<SetupSuperAdmin />} />
           <Route path="/admin/dashboard" element={<UnifiedDashboard />} />
           <Route path="/admin/old-dashboard" element={<AdminDashboard />} />
           <Route path="/admin/payments" element={<PaymentsDashboard />} />
