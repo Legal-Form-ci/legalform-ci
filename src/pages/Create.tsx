@@ -335,38 +335,80 @@ const Create = () => {
   };
 
   const nextStep = () => {
-    if (step === 1 && !formData.structureType) {
-      toast({
-        title: "Sélection requise",
-        description: "Veuillez sélectionner un type de structure",
-        variant: "destructive",
-      });
-      return;
+    // Step 1: Structure type required
+    if (step === 1) {
+      if (!formData.structureType) {
+        toast({
+          title: "Sélection requise",
+          description: "Veuillez sélectionner un type de structure",
+          variant: "destructive",
+        });
+        return;
+      }
     }
-    if (step === 2 && (!formData.region || !formData.address)) {
-      toast({
-        title: "Informations requises",
-        description: "Veuillez renseigner la région et l'adresse",
-        variant: "destructive",
-      });
-      return;
+    
+    // Step 2: Region and address required
+    if (step === 2) {
+      if (!formData.region) {
+        toast({
+          title: "Informations requises",
+          description: "Veuillez sélectionner une région",
+          variant: "destructive",
+        });
+        return;
+      }
+      if (!formData.address || formData.address.trim().length < 5) {
+        toast({
+          title: "Informations requises",
+          description: "Veuillez renseigner une adresse valide (minimum 5 caractères)",
+          variant: "destructive",
+        });
+        return;
+      }
     }
-    if (step === 3 && (!formData.contactName || !formData.email || !formData.phone)) {
-      toast({
-        title: "Informations requises",
-        description: "Veuillez renseigner le nom de contact, l'email et le téléphone",
-        variant: "destructive",
-      });
-      return;
+    
+    // Step 3: Contact info required
+    if (step === 3) {
+      if (!formData.contactName || formData.contactName.trim().length < 2) {
+        toast({
+          title: "Informations requises",
+          description: "Veuillez renseigner le nom de contact (minimum 2 caractères)",
+          variant: "destructive",
+        });
+        return;
+      }
+      if (!formData.email || !formData.email.includes('@')) {
+        toast({
+          title: "Informations requises",
+          description: "Veuillez renseigner une adresse email valide",
+          variant: "destructive",
+        });
+        return;
+      }
+      if (!formData.phone || formData.phone.trim().length < 8) {
+        toast({
+          title: "Informations requises",
+          description: "Veuillez renseigner un numéro de téléphone valide",
+          variant: "destructive",
+        });
+        return;
+      }
     }
-    if (step === 4 && associates.some(a => !a.fullName || !a.email || !a.phone)) {
-      toast({
-        title: "Informations requises",
-        description: "Veuillez remplir tous les champs obligatoires pour chaque associé",
-        variant: "destructive",
-      });
-      return;
+    
+    // Step 4: Associates validation
+    if (step === 4) {
+      const invalidAssociate = associates.find(a => !a.fullName || !a.email || !a.phone);
+      if (invalidAssociate) {
+        toast({
+          title: "Informations requises",
+          description: "Veuillez remplir nom, email et téléphone pour chaque associé",
+          variant: "destructive",
+        });
+        return;
+      }
     }
+    
+    // All validations passed, go to next step
     setStep(step + 1);
   };
 

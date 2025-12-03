@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -12,6 +13,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,11 +21,13 @@ const Contact = () => {
     subject: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
     const validation = contactFormSchema.safeParse(formData);
     if (!validation.success) {
@@ -32,6 +36,7 @@ const Contact = () => {
         description: validation.error.errors[0].message,
         variant: "destructive",
       });
+      setIsSubmitting(false);
       return;
     }
     
@@ -67,6 +72,8 @@ const Contact = () => {
         description: "Une erreur est survenue. Veuillez réessayer.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -75,24 +82,35 @@ const Contact = () => {
       icon: Phone,
       title: "Téléphone",
       details: [
-        "+225 27 22 XX XX XX (Abidjan)",
-        "+225 07 XX XX XX XX (WhatsApp)"
+        "+225 07 89 45 12 36",
+        "+225 05 46 78 23 45"
       ]
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      details: [
+        "+225 07 89 45 12 36"
+      ],
+      action: {
+        label: "Discuter sur WhatsApp",
+        url: "https://wa.me/2250789451236"
+      }
     },
     {
       icon: Mail,
       title: "Email",
       details: [
         "contact@legalform.ci",
-        "entreprise@legalform.ci"
+        "support@legalform.ci"
       ]
     },
     {
       icon: MapPin,
       title: "Adresse",
       details: [
-        "Abidjan, Cocody",
-        "Présents dans toutes les régions"
+        "Abidjan, Cocody Riviera Palmeraie",
+        "Côte d'Ivoire"
       ]
     }
   ];
@@ -106,7 +124,7 @@ const Contact = () => {
           {/* Hero */}
           <div className="text-center mb-16">
             <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-foreground mb-6">
-              Contactez-Nous
+              {t('footer.contact')}
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
               Notre équipe est à votre écoute pour répondre à toutes vos questions
@@ -134,6 +152,16 @@ const Contact = () => {
                           {detail}
                         </p>
                       ))}
+                      {info.action && (
+                        <a
+                          href={info.action.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block mt-2 text-sm text-primary hover:underline"
+                        >
+                          {info.action.label} →
+                        </a>
+                      )}
                     </CardContent>
                   </Card>
                 );
@@ -143,7 +171,8 @@ const Contact = () => {
                 <CardContent className="p-6">
                   <h3 className="font-bold text-xl mb-2">Horaires d'ouverture</h3>
                   <p className="text-white/90 text-sm mb-2">Lundi - Vendredi: 8h - 18h</p>
-                  <p className="text-white/90 text-sm">Samedi: 9h - 13h</p>
+                  <p className="text-white/90 text-sm mb-2">Samedi: 9h - 13h</p>
+                  <p className="text-white/90 text-sm">Dimanche: Fermé</p>
                 </CardContent>
               </Card>
             </div>
@@ -160,7 +189,7 @@ const Contact = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Nom complet *</Label>
+                      <Label htmlFor="name">{t('form.name')} *</Label>
                       <Input
                         id="name"
                         value={formData.name}
@@ -171,7 +200,7 @@ const Contact = () => {
                     </div>
                     
                     <div>
-                      <Label htmlFor="email">Email *</Label>
+                      <Label htmlFor="email">{t('form.email')} *</Label>
                       <Input
                         id="email"
                         type="email"
@@ -185,7 +214,7 @@ const Contact = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="phone">Téléphone *</Label>
+                      <Label htmlFor="phone">{t('form.phone')} *</Label>
                       <Input
                         id="phone"
                         type="tel"
@@ -208,7 +237,7 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message">{t('form.message')} *</Label>
                     <Textarea
                       id="message"
                       value={formData.message}
@@ -219,9 +248,9 @@ const Contact = () => {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full">
+                  <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                     <Send className="mr-2 h-5 w-5" />
-                    Envoyer le message
+                    {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
                   </Button>
                 </form>
               </CardContent>
