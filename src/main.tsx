@@ -1,8 +1,11 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import ReactDOM from "react-dom/client";
 import "./index.css";
+
+// Import i18n config before App to ensure translations are loaded
 import "./i18n/config";
+
+import App from "./App";
 import { registerServiceWorker } from "./utils/serviceWorkerRegistration";
 import { initGA } from "./utils/analytics";
 
@@ -12,7 +15,7 @@ initGA();
 // Register Service Worker for offline support
 registerServiceWorker();
 
-createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
