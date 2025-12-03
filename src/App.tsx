@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { logPageView } from "@/utils/analytics";
@@ -49,43 +47,41 @@ const PageViewTracker = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <Toaster />
-    <Sonner />
     <BrowserRouter>
       <PageViewTracker />
       <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/additional" element={<AdditionalServices />} />
-          <Route path="/service-request" element={<ServiceRequest />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/regions" element={<Regions />} />
-          <Route path="/pricing" element={<Pricing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/showcase" element={<Showcase />} />
-          <Route path="/testimonials" element={<Testimonials />} />
-          <Route path="/auth" element={<Auth />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/admin/setup" element={<SetupSuperAdmin />} />
-          <Route path="/admin/initial-setup" element={<InitialSetup />} />
-          <Route path="/admin/dashboard" element={<UnifiedDashboard />} />
-          <Route path="/admin/old-dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/payments" element={<PaymentsDashboard />} />
-          <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
-          <Route path="/admin/users" element={<UsersManagement />} />
-          <Route path="/client/dashboard" element={<ClientDashboard />} />
-          <Route path="/request/:id" element={<RequestDetail />} />
-          <Route path="/tracking" element={<PublicTracking />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/ebooks" element={<Ebooks />} />
-          <Route path="/ebook/:slug" element={<EbookDownload />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+        <Route path="/" element={<Index />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/additional" element={<AdditionalServices />} />
+        <Route path="/service-request" element={<ServiceRequest />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/regions" element={<Regions />} />
+        <Route path="/pricing" element={<Pricing />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/showcase" element={<Showcase />} />
+        <Route path="/testimonials" element={<Testimonials />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/admin/setup" element={<SetupSuperAdmin />} />
+        <Route path="/admin/initial-setup" element={<InitialSetup />} />
+        <Route path="/admin/dashboard" element={<UnifiedDashboard />} />
+        <Route path="/admin/old-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/payments" element={<PaymentsDashboard />} />
+        <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
+        <Route path="/admin/users" element={<UsersManagement />} />
+        <Route path="/client/dashboard" element={<ClientDashboard />} />
+        <Route path="/request/:id" element={<RequestDetail />} />
+        <Route path="/tracking" element={<PublicTracking />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/ebooks" element={<Ebooks />} />
+        <Route path="/ebook/:slug" element={<EbookDownload />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
