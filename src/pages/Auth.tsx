@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PasswordInput } from "@/components/PasswordInput";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const Auth = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
@@ -45,7 +48,7 @@ const Auth = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-md">
           <div className="text-center mb-8">
             <h1 className="font-heading font-bold text-4xl text-foreground mb-4">
-              Connexion / Inscription
+              {t('auth.login')} / {t('auth.signup')}
             </h1>
             <p className="text-muted-foreground">
               Accédez à votre espace personnel
@@ -54,14 +57,14 @@ const Auth = () => {
 
           <Tabs defaultValue="login" className="w-full">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Connexion</TabsTrigger>
-              <TabsTrigger value="signup">Inscription</TabsTrigger>
+              <TabsTrigger value="login">{t('auth.login')}</TabsTrigger>
+              <TabsTrigger value="signup">{t('auth.signup')}</TabsTrigger>
             </TabsList>
             
             <TabsContent value="login">
               <Card>
                 <CardHeader>
-                  <CardTitle>Connexion</CardTitle>
+                  <CardTitle>{t('auth.login')}</CardTitle>
                   <CardDescription>
                     Connectez-vous pour suivre vos dossiers
                   </CardDescription>
@@ -69,7 +72,7 @@ const Auth = () => {
                 <CardContent>
                   <form onSubmit={handleSignIn} className="space-y-4">
                     <div>
-                      <Label htmlFor="login-email">Email</Label>
+                      <Label htmlFor="login-email">{t('auth.email')}</Label>
                       <Input
                         id="login-email"
                         type="email"
@@ -79,17 +82,21 @@ const Auth = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="login-password">Mot de passe</Label>
-                      <Input
+                      <Label htmlFor="login-password">{t('auth.password')}</Label>
+                      <PasswordInput
                         id="login-password"
-                        type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />
                     </div>
+                    <div className="text-right">
+                      <Link to="/forgot-password" className="text-sm text-primary hover:underline">
+                        {t('auth.forgotPassword')}
+                      </Link>
+                    </div>
                     <Button type="submit" className="w-full">
-                      Se connecter
+                      {t('auth.loginButton')}
                     </Button>
                   </form>
                 </CardContent>
@@ -99,7 +106,7 @@ const Auth = () => {
             <TabsContent value="signup">
               <Card>
                 <CardHeader>
-                  <CardTitle>Inscription</CardTitle>
+                  <CardTitle>{t('auth.signup')}</CardTitle>
                   <CardDescription>
                     Créez un compte pour commencer
                   </CardDescription>
@@ -107,7 +114,7 @@ const Auth = () => {
                 <CardContent>
                   <form onSubmit={handleSignUp} className="space-y-4">
                     <div>
-                      <Label htmlFor="signup-name">Nom complet</Label>
+                      <Label htmlFor="signup-name">{t('form.name')}</Label>
                       <Input
                         id="signup-name"
                         type="text"
@@ -117,7 +124,7 @@ const Auth = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="signup-phone">Téléphone</Label>
+                      <Label htmlFor="signup-phone">{t('form.phone')}</Label>
                       <Input
                         id="signup-phone"
                         type="tel"
@@ -127,7 +134,7 @@ const Auth = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="signup-email">Email</Label>
+                      <Label htmlFor="signup-email">{t('auth.email')}</Label>
                       <Input
                         id="signup-email"
                         type="email"
@@ -137,10 +144,9 @@ const Auth = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="signup-password">Mot de passe</Label>
-                      <Input
+                      <Label htmlFor="signup-password">{t('auth.password')}</Label>
+                      <PasswordInput
                         id="signup-password"
-                        type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
@@ -148,7 +154,7 @@ const Auth = () => {
                       />
                     </div>
                     <Button type="submit" className="w-full">
-                      S'inscrire
+                      {t('auth.signupButton')}
                     </Button>
                   </form>
                 </CardContent>

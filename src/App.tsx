@@ -32,6 +32,8 @@ import Ebooks from "./pages/Ebooks";
 import EbookDownload from "./pages/EbookDownload";
 import SetupSuperAdmin from "./pages/admin/SetupSuperAdmin";
 import UsersManagement from "./pages/admin/UsersManagement";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +68,8 @@ const App = () => (
           <Route path="/showcase" element={<Showcase />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/admin/setup" element={<SetupSuperAdmin />} />
           <Route path="/admin/initial-setup" element={<InitialSetup />} />
           <Route path="/admin/dashboard" element={<UnifiedDashboard />} />
